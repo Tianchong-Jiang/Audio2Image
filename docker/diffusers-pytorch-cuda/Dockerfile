@@ -12,6 +12,9 @@ RUN apt update && \
                    curl \
                    ca-certificates \
                    libsndfile1-dev \
+                   ffmpeg \
+                   bsm6 \
+                   libxext6 \
                    python3.8 \
                    python3-pip \
                    python3.8-venv && \
@@ -45,7 +48,8 @@ RUN python3 -m pip install --no-cache-dir \
     kornia \
     imageio \
     imageio-ffmpeg \
-    moviepy
+    moviepy \
+    opencv-python
 
 RUN python3 -m pip install --no-cache-dir \
     bitsandbytes
