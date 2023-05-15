@@ -457,9 +457,9 @@ class UNetFlatConditionModel(ModelMixin, ConfigMixin):
                 only_cross_attention=only_cross_attention[i],
                 upcast_attention=upcast_attention,
                 resnet_time_scale_shift=resnet_time_scale_shift,
-                resnet_skip_time_act=resnet_skip_time_act,
-                resnet_out_scale_factor=resnet_out_scale_factor,
-                cross_attention_norm=cross_attention_norm,
+                # resnet_skip_time_act=resnet_skip_time_act,
+                # resnet_out_scale_factor=resnet_out_scale_factor,
+                # cross_attention_norm=cross_attention_norm,
             )
             self.down_blocks.append(down_block)
 
@@ -542,9 +542,9 @@ class UNetFlatConditionModel(ModelMixin, ConfigMixin):
                 only_cross_attention=only_cross_attention[i],
                 upcast_attention=upcast_attention,
                 resnet_time_scale_shift=resnet_time_scale_shift,
-                resnet_skip_time_act=resnet_skip_time_act,
-                resnet_out_scale_factor=resnet_out_scale_factor,
-                cross_attention_norm=cross_attention_norm,
+                # resnet_skip_time_act=resnet_skip_time_act,
+                # resnet_out_scale_factor=resnet_out_scale_factor,
+                # cross_attention_norm=cross_attention_norm,
             )
             self.up_blocks.append(up_block)
             prev_output_channel = output_channel

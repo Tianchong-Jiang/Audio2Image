@@ -13,7 +13,7 @@ RUN apt update && \
                    ca-certificates \
                    libsndfile1-dev \
                    ffmpeg \
-                   bsm6 \
+                   libsm6 \
                    libxext6 \
                    python3.8 \
                    python3-pip \
