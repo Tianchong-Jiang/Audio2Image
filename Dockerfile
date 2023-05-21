@@ -55,8 +55,12 @@ RUN python3 -m pip install --no-cache-dir \
     easydict \
     gradio \
     einops \
+    dotmap \
     warmup_scheduler \
-    dotmap
+    h5py \
+    torchlibrosa \
+    gensim \
+    nltk
 
 RUN python3 -m pip install --no-cache-dir \
     bitsandbytes
