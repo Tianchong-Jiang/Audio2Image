@@ -1,0 +1,6 @@
+[submodule "cl4ac"]
+	path = cl4ac
+	url = git@github.com:Tianchong-Jiang/cl4ac.git
+[submodule "versatile_diffusion"]
+	path = versatile_diffusion
+	url = git@github.com:Tianchong-Jiang/Versatile-Diffusion.git
