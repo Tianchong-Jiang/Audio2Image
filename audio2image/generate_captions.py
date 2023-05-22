@@ -23,7 +23,7 @@ for i in range(10):
     # pdb.set_trace()
 
     for text_line in text:
-        res.append([caption, text_line, str(i)])
+        res.append([caption, str(i), text_line])
 
 with open('/rmx/diffuser/output/prompts.csv', 'w') as csvfile:
     writer = csv.writer(csvfile)
