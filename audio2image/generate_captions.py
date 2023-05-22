@@ -13,22 +13,19 @@ file_list.sort()
 
 res = []
 
-for i in range(10):
+for i in range(len(file_list)):
     image = Image.open("/data/frames/" + file_list[i])
     image.resize((512, 512), Image.ANTIALIAS)
     text = inferece.inference_i2t(image, 1234)
     text = text.split('\n')
-    caption = file_list[i].split('.')[0]
-
-    # pdb.set_trace()
+    audio_name = file_list[i].split('.')[0]
 
     for text_line in text:
-        res.append([caption, str(i), text_line])
+        text_line = text_line.replace('"', '').replace(',', '')
+        res.append([audio_name, str(i), text_line])
 
-with open('/rmx/diffuser/output/prompts.csv', 'w') as csvfile:
+with open('/rmx/diffuser/output/prompts_10per.csv', 'w') as csvfile:
     writer = csv.writer(csvfile)
     writer.writerows(res)
 
-    # with open('/rmx/diffuser/output/prompts.txt', 'a') as f:
-    #     f.write(text + '\n')
 
