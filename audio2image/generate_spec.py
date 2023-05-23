@@ -4,6 +4,7 @@ import os
 import pickle
 import librosa
 import librosa.display
+import csv
 import pdb
 
 # data_dir = "/data"
@@ -12,6 +13,8 @@ data_dir = "/home/tianchong/Downloads"
 file_list = os.listdir(data_dir + "/audios")
 file_list.sort()
 res = {}
+
+list_too_short = []
 
 for i in range(len(file_list)):
 
@@ -28,12 +31,13 @@ for i in range(len(file_list)):
     # assert log_mel_spectrogram.shape[1] >= 2584
 
     if log_mel_spectrogram.shape[1] >= 2584:
-
         log_mel_spectrogram = log_mel_spectrogram[:, :2584]
         log_mel_spectrogram = log_mel_spectrogram.T
 
         audio_name = file_list[i].split('.')[0]
         res[audio_name] = log_mel_spectrogram
+    else:
+        list_too_short.append(file_list[i])
 
 print(f"Number of samples kept: {len(res)}")
 
@@ -41,7 +45,9 @@ print(f"Number of samples kept: {len(res)}")
 with open(data_dir + '/spec.pickle', 'wb') as f:
     pickle.dump(res, f)
 
-
-
+# save list_too_short to csv file
+with open('.output/output/too_short.csv', 'w') as f:
+    writer = csv.writer(f)
+    writer.writerow(list_too_short)
 
 
