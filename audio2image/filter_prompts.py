@@ -3,7 +3,7 @@ import os
 import csv
 import pdb
 
-str_to_filter = ['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
+str_to_filter = []#['1', '2', '3', '4', '5', '6', '7', '8', '9', '0']
 
 output = []
 

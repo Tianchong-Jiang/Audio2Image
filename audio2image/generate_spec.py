@@ -23,15 +23,14 @@ for i in range(len(file_list)):
     y, sr = librosa.load(filename)
 
     # Compute a Mel-scaled spectrogram
-    mel_spectrogram = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=64, hop_length = 80)
+    mel_spectrogram = librosa.feature.melspectrogram(y=y, sr=44100, n_mels=64, hop_length=512, win_length=1024, fmin=50, fmax=14000)
+    # mel_spectrogram = librosa.feature.melspectrogram(y=y, sr=sr, n_mels=64, hop_length = 80)
 
     # Convert to log scale (dB). We'll use the peak power as reference.
     log_mel_spectrogram = librosa.power_to_db(mel_spectrogram, ref=np.max)
 
-    # assert log_mel_spectrogram.shape[1] >= 2584
-
-    if log_mel_spectrogram.shape[1] >= 2584:
-        log_mel_spectrogram = log_mel_spectrogram[:, :2584]
+    if log_mel_spectrogram.shape[1] >= 400:
+        log_mel_spectrogram = log_mel_spectrogram[:, :400]
         log_mel_spectrogram = log_mel_spectrogram.T
 
         audio_name = file_list[i].split('.')[0]
@@ -41,8 +40,10 @@ for i in range(len(file_list)):
 
 print(f"Number of samples kept: {len(res)}")
 
+pdb.set_trace()
+
 # save to pickle
-with open(data_dir + '/spec.pickle', 'wb') as f:
+with open(data_dir + '/spec_new_param.pickle', 'wb') as f:
     pickle.dump(res, f)
 
 # save list_too_short to csv file
